@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pares de Placas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Pares de Placas</h1>
+    <p class="muted">Envie as fotos do Dia 1 e do Dia 5 (um .zip para cada dia). As etiquetas são lidas por OCR
+      e as placas são pareadas pelo identificador e pelo número. Tudo roda no seu navegador: as fotos não são
+      enviadas a nenhum servidor.</p>
+  </header>
+
+  <main>
+    <section class="uploads">
+      <div class="drop" id="drop1">
+        <input type="file" id="zip1" accept=".zip,application/zip" hidden>
+        <div class="day">Dia 1 <span class="muted">(antes)</span></div>
+        <div class="fname muted">Clique ou arraste o .zip aqui</div>
+      </div>
+      <div class="drop" id="drop5">
+        <input type="file" id="zip5" accept=".zip,application/zip" hidden>
+        <div class="day">Dia 5 <span class="muted">(depois)</span></div>
+        <div class="fname muted">Clique ou arraste o .zip aqui</div>
+      </div>
+    </section>
+    <div class="actions">
+      <button id="btnProcess" class="primary" disabled>Processar</button>
+    </div>
+
+    <section id="progress" hidden>
+      <progress id="progBar" max="1" value="0"></progress>
+      <div id="progText" class="muted"></div>
+    </section>
+
+    <section id="gallerySec" hidden>
+      <div class="sec-head">
+        <h2>Pares</h2>
+        <button id="btnZip" class="primary">Baixar todos (.zip)</button>
+      </div>
+      <p class="muted">Confira se o número da placa de cima é o mesmo da de baixo. Clique numa imagem para ampliar.</p>
+      <div id="gallery"></div>
+    </section>
+
+    <section id="review" hidden>
+      <h2>Revisão</h2>
+      <div id="summary" class="panel"></div>
+      <p class="muted">Corrija aqui qualquer leitura errada (os itens destacados em amarelo pedem atenção).
+        Depois clique em “Atualizar imagens”.</p>
+      <details open>
+        <summary>Fotos do Dia 1</summary>
+        <div id="photos1" class="photos"></div>
+      </details>
+      <details>
+        <summary>Fotos do Dia 5</summary>
+        <div id="photos5" class="photos"></div>
+      </details>
+    </section>
+  </main>
+
+  <div id="modal" hidden>
+    <div class="modal-box">
+      <img id="modalImg" alt="">
+      <div class="modal-bar">
+        <span id="modalCap"></span>
+        <span>
+          <a id="modalDl" class="button">Baixar</a>
+          <button id="modalClose">Fechar</button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
